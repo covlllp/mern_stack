@@ -7,6 +7,10 @@ module.exports = function(app) {
     return app.get(path);
   };
 
+  if (process.env.NODE_ENV !== 'production') {
+    require('./webpack-middleware')(app);
+  }
+
   require('./app-variables')(app);
   require('./parsing-middleware')(app);
   require('./static-middleware')(app);

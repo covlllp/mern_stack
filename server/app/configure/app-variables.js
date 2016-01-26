@@ -19,7 +19,6 @@ var logMiddleware = function (req, res, next) {
 
 module.exports = function(app) {
   app.setValue('projectRoot', rootPath);
-  app.setValue('projectRoot', rootPath);
   app.setValue('indexHTMLPath', indexPath);
   app.setValue('faviconPath', faviconPath);
   app.setValue('log', logMiddleware);

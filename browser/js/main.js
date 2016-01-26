@@ -1,7 +1,8 @@
 'use strict';
+require('./../scss/main.scss');
 
 var printStuff = require('./test');
-
-
-printStuff('Bill');
+console.log('is this changing?');
+console.log('it is changing!');
+printStuff('John');
 printStuff('John');
