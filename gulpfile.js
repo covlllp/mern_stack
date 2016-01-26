@@ -4,12 +4,16 @@ var path = require('path');
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var jshint = require('gulp-jshint');
+var jsxhint = require('jshint-jsx');
+
 
 gulp.task('lintJs', function() {
   return gulp.src(['./browser/js/**/*.js', './server/**/*.js'])
     .pipe(jshint({
       strict: 'global',
-      node: true
+      node: true,
+      linter: jsxhint.JSXHINT,
+      browser: true
     })).pipe(jshint.reporter('jshint-stylish'));
 });
 

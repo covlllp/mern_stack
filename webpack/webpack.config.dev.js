@@ -4,15 +4,8 @@ var path = require('path');
 var chalk = require('chalk');
 var webpack = require('webpack');
 var staticsPath = path.join(__dirname, '..', 'build', 'public');
-var entryPath = path.join(__dirname, '..', 'browser', 'js', 'main.js')
-
-var progressOutput = function(percentage, msg) {
-  if (percentage === 0) {
-    console.log(chalk.yellow('Webpack compiler starting'));
-  } else if (percentage === 1) {
-    console.log(chalk.green('Webpack compiler complete'));
-  }
-};
+var jsPath = path.join(__dirname, '..', 'browser', 'js')
+var entryPath = path.join(jsPath, 'main.js')
 
 module.exports = {
   name: 'browser',
@@ -31,12 +24,19 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
+      },
+      {
+        test: /\.jsx?$/,
+        include: jsPath,
+        loader: 'babel',
+        query: {
+          presets: ['react']
+        }
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.ProgressPlugin(progressOutput)
+    new webpack.NoErrorsPlugin()
   ]
 };

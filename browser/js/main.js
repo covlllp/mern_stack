@@ -1,8 +1,15 @@
 'use strict';
+
+var ReactDOM = require('react-dom');
+var React = require('react');
+
 require('./../scss/main.scss');
 
-var printStuff = require('./test');
-console.log('is this changing?');
-console.log('it is changing!');
-printStuff('John');
-printStuff('John');
+var Greeting = require('./test');
+
+document.addEventListener('DOMContentLoaded', function() {
+  ReactDOM.render(
+    <Greeting name="Colin" />,
+    document.getElementById('content')
+  );
+});

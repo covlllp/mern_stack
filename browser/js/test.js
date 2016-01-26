@@ -1,7 +1,15 @@
 'use strict';
 
-var hello = 123;
+var React = require('react');
 
-module.exports = function(name) {
-  console.log('Hello World! My name is', name);
-};
+var reactClass = React.createClass({
+  render: function() {
+    return (
+      <div className="hello">
+        Hello, {this.props.name}
+      </div>
+    );
+  }
+});
+
+module.exports = reactClass;
